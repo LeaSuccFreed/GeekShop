@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client": "cd frontend && npm run start",
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon backend/server.js",
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "client": "cd frontend && npm run start",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "author": "Branislav Papan",
