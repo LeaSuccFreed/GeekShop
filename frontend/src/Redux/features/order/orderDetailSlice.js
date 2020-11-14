@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState ={
     loading: true,
+    order: {}
 }
 
 const orderDetailsSlice = createSlice({
@@ -9,7 +10,7 @@ const orderDetailsSlice = createSlice({
     initialState,
     reducers: {
         detailOrderRequest: (state) => {
-            state.loaing = true;
+            state.loading = true;
         },
         orderDetailSuccess: (state, {payload}) => {
             state.loading = false;

@@ -10,6 +10,7 @@ import { userSignOutInit } from '../../Redux/features/user/signinSlice'
 const Header = ({openmenu}) => {
     const {userInfo} = useSelector(state => state.signin)
     const[open, setOpen] = useState(false);
+    const[openAdmin, setOpenAdmin] = useState(false)
     const dispatch = useDispatch()
     
     const toogleOpen = (e) => {
@@ -23,32 +24,39 @@ const Header = ({openmenu}) => {
     return (
         <HeaderContainer>
             <UpperHeaderContainer>
-                <Title to="/"> <Gold>Shop</Gold>ForEveryOne</Title>
-                <SearchBar></SearchBar>
-                <Link to='/cart/:id'>
+                <Title to="/"> <Gold>Geek</Gold>Universe <Gold>G.</Gold>U.</Title>
+                <div className="loginCartContainer">
+                    <Link to='/cart/:id'>
                     <Cart></Cart>
-                </Link>
+                    </Link>
+                    {
+                        userInfo?._id ? 
+                            ( 
+                                <>
+                                <p onClick={toogleOpen}  className="loginIconContainer"><strong>{userInfo.name}</strong></p>
+                                    <DropDownContainer open={open} className='dropDown'>
+                                        <Lnk to='/profile'>Profile</Lnk>
+                                        <Lnk to='/orderhistory'>Order History</Lnk>
+                                        <Lnk onClick={signOutHandler} to='#signout'>Sign Out</Lnk>
+                                    </DropDownContainer>
+                            </>
+                            ) 
+                            : 
+                                <Link className="loginIconContainer" to='/signin'>
+                                    <LoginIcon />
+                                </Link>
+                    }
+                </div>
+                
                 
             </UpperHeaderContainer>
             <LowerHeaderContainer>
                 <MenuIcon onClick={openmenu}/>
                 {
-                    userInfo?._id ? 
-                           ( 
-                            <>
-                            <p onMouseEnter={toogleOpen}  className="loginIconContainer">{userInfo.name}</p>
-                                <DropDownContainer open={open}  onMouseLeave={toogleOpen} className='dropDown'>
-                                    <Lnk to='/profile'>Profile</Lnk>
-                                    <Lnk to='/orderhistory'>Order History</Lnk>
-                                    <Lnk onClick={signOutHandler} to='#signout'>Sign Out</Lnk>
-                                </DropDownContainer>
-                           </>
-                           ) 
-                        : 
-                            <Link className="loginIconContainer" to='/signin'>
-                                <LoginIcon />
-                            </Link>
-                } 
+                        userInfo && userInfo.isAdmin && (
+                            <Link className="adminL" to="/admin"> Admin </Link>
+                        )
+                 } 
             </LowerHeaderContainer>
         </HeaderContainer>
     )

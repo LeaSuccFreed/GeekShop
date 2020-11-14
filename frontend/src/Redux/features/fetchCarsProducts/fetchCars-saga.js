@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { detach } from 'redux-saga';
-import {put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {put, takeEvery, takeLatest, takeLeading} from 'redux-saga/effects'
 import { fetchFailure, fetchSuccess } from './fetchCars';
 
 ////Worker Saga////
@@ -19,5 +19,5 @@ function* fetchCars(){
 ////Watcher Saga///
 
 export function* watchFetchCars(){
-    yield takeLatest('fetchCars/fetchStart', fetchCars)
+    yield takeLeading('fetchCars/fetchStart', fetchCars)
 }

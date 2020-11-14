@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {  useParams } from 'react-router-dom'
 import {PayPalButton} from 'react-paypal-button-v2'
-import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, TotalContainer, Button} from '../cart-page/cart_style'
+import Button from '../../components/button/Button'
+import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, TotalContainer} from '../cart-page/cart_style'
 import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container} from './order-detail.style'
 import { detailOrderRequest } from '../../Redux/features/order/orderDetailSlice'
+import {orderPayRequest, orderPayReset} from '../../Redux/features/order/orderPaySlice'
 import Axios from 'axios'
+import { orderDeliverRequest, orderDeliverReset } from '../../Redux/features/order/orderDeliverSlice'
 
 const OrderDetail = () => {
     // const navigate = useNavigate();
@@ -13,9 +16,12 @@ const OrderDetail = () => {
     const dispatch = useDispatch();
     const {id} = useParams();
     const { order, loading, error } = useSelector(state => state.orderDetails)
+    const {error: errorPay, success: successPay, loading: loadingPay} = useSelector(state => state.orderPay)
+    const {loading: deliverLoading, success: deliverSuccess, error: deliverError} = useSelector(state => state.orderDeliver)
+    const {userInfo} = useSelector(state => state.signin)
 
-    const{shipping, paymentMethod, orderItems, itemsPrice, shippingPrice, taxPrice, totalPrice, isPaid, deliverAt, isDelivered, paidAt} = order;
-    console.log(id)
+    const{shipping, paymentMethod, orderItems, itemsPrice, shippingPrice, taxPrice, totalPrice, isPaid, deliveredAt, isDelivered, paidAt} = order;
+    
 
     useEffect(() => {
         const addPayPal = async () => {
@@ -30,7 +36,9 @@ const OrderDetail = () => {
           document.body.appendChild(script)
         }
 
-        if(!order._id){
+        if(!order || successPay || deliverSuccess || (order && order._id !== id)){
+          dispatch(orderPayReset())
+          dispatch(orderDeliverReset())
           dispatch(detailOrderRequest(id))
         } else{
           if(!isPaid){
@@ -42,11 +50,15 @@ const OrderDetail = () => {
           }
         }
         
-	}, [order, id, sdkReady])
+	}, [dispatch, order, id, sdkReady, successPay, deliverSuccess])
 
-	const successPaymentHandler = () => {
-
-	}
+	const successPaymentHandler = (paymentResult) => {
+    dispatch(orderPayRequest({order, paymentResult}))
+  }
+  
+  const deliverHandler = () => {
+    dispatch(orderDeliverRequest(order._id))
+  }
 
     return (
       <Container>
@@ -60,7 +72,7 @@ const OrderDetail = () => {
                                     <h3>Shipping</h3>
                                     <p><strong>Name:</strong> {shipping.fullName} </p>
                                     <p><strong>Address:</strong> {shipping.address}, {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
-                                    {isDelivered ? <p>Delivered at {deliverAt}</p> : <p>Not Delivered</p>}
+                                    {isDelivered ? <p>Delivered at {deliveredAt}</p> : <p>Not Delivered</p>}
                                   </div>
                                   <div>
                                     <h3>Payment</h3>
@@ -120,11 +132,33 @@ const OrderDetail = () => {
 
 			{!isPaid && (
 				<div>
+
+          {errorPay && <p>{errorPay}</p>}
+          {loadingPay && <p>...Loading</p>} 
+
 					{!sdkReady ? <p>...Loading</p> : 
 						<PayPalButton amount={ totalPrice } onSuccess={successPaymentHandler}></PayPalButton>
 					}
 				</div>
+
 			) }
+
+      {
+        userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+          <div>
+            {deliverLoading && <p>...Loading</p>}
+            {deliverError && <p>{deliverError}</p>}
+            <Button type="button"
+                    onclick={deliverHandler}>
+              Deliver
+            </Button>
+
+          </div>
+
+
+        )
+      }
+
           </TotalContainer>
         </PlaceOrderAction>
       </Container>

@@ -30,7 +30,7 @@ const createOrderSlice = createSlice({
         createOrderReset: (state) => {
             state.loadingOrder = false;
             state.errorOrder = false;
-            state.success = false;
+            state.orderSuccess = false;
             state.order = [];
         }
     }

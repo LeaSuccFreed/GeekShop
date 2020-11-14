@@ -48,15 +48,15 @@ const PlaceOrder = () => {
               <PlaceOrderInfo>
                                   <div>
                                     <h3>Shipping</h3>
-                                    <p>Name: {shipping.fullName} </p>
-                                    <p>Email: {userInfo.email}</p>
-                                    <p>Address: {shipping.address}, {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
+                                    <p><strong>Name:</strong> {shipping.fullName} </p>
+                                    <p><strong>Email:</strong> {userInfo.email}</p>
+                                    <p><strong>Address:</strong> {shipping.address}, {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
                                     <p></p>
                                   </div>
                                   <div>
                                     <h3>Payment</h3>
                                     <div>
-                                      Payment Method: {paymentMethod}
+                                     <strong>Payment Method:</strong> {paymentMethod}
                                     </div>
                                   </div>
                 </PlaceOrderInfo>

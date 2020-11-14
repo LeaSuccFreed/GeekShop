@@ -10,7 +10,7 @@ import orderRouter from './routes/orderRouter.js';
 
 dotenv.config()
 const mongodbUrl = config.MONGODB_URL;
-mongoose.connect(mongodbUrl,{
+mongoose.connect(process.env.MONGODBURI || mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -18,6 +18,7 @@ mongoose.connect(mongodbUrl,{
 }).catch(error => console.log(error.reason))
 
 const app = express();
+const PORT = process.env.PORT || 5000
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
@@ -27,7 +28,10 @@ app.get("/api/config/paypal", (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 })
 
+if(process.env.NODE_ENV === 'production'{
+    
+}
 
-app.listen(5000, ()=>{
-    console.log('Server running at localhost:5000')
+app.listen(PORT, ()=>{
+    console.log(`Server running at ${PORT}`)
 })

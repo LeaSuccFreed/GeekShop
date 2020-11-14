@@ -10,7 +10,11 @@ const productSchema = new Schema({
     description: {type: String, default: 0, required: true},
     rating: { type: Number, default: 0, required: 0},
     numReviews: {type: Number, default: 0, required: true},
-})
+},
+{
+    timestamps: true,
+}
+)
 
 const productModel = mongoose.model("Product", productSchema);
 export default productModel;

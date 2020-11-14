@@ -7,14 +7,20 @@ import {ReactComponent as MenuLogo} from '../../assets/menu.svg'
 export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 80px;
+    height: 12.5vh;/*80px;*/
 `
 
 export const UpperHeaderContainer = styled.div`
     display: flex;
     height: 55px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+
+    & .loginCartContainer{
+        display: flex;
+        align-items: center;
+        padding-right: 5%;
+    }
 `
 
 export const Gold = styled.span`
@@ -27,16 +33,12 @@ height: 25px;
 display: flex;
 background: black;
 align-items: center;
-/* justify-content: space-evenly; */
+justify-content: space-between; 
 
-& .loginIconContainer{
-    display: flex;
-    cursor: pointer;
-    flex-grow: 1;
-    justify-content: flex-end;
-    color: white;
-    margin-right: 2%;
-}
+& .adminL{
+            padding-right: 2%;
+            color: white;
+        }
 `
 export const LoginIcon = styled(LoginLogo)`
     stroke-width: 5%;
@@ -54,7 +56,8 @@ export const Title = styled(Link)`
   margin-bottom: 1em;
   margin-left: 0;
   margin-right: 0;
-  font-weight: bold;    
+  font-weight: bold;
+  padding-left: 7%;    
 `
 
 /////////DropDown/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +69,7 @@ export const DropDownContainer = styled.div`
     align-items: center;
     position: absolute;
     right: 0;
-    top: 12.5vh;
+    top: 9vh;
     min-width: 140px;
     min-height: 100px;
     /* height: ${({open}) => open === true ? '100px' : "0"}; */

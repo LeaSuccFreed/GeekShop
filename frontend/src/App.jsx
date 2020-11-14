@@ -14,6 +14,10 @@ import Shipping from './Pages/shipping/Shipping';
 import Payment from './Pages/payment/Payment';
 import PlaceOrder from './Pages/place-order/PlaceOrder';
 import OrderDetail from './Pages/OrderDetail/OrderDetail';
+import OrderHistory from './Pages/orderHistory/OrderHistory';
+import Profile from './Pages/profile/Profile';
+import Admin from './Pages/admin/Admin';
+import OrderList from './Pages/order-list/OrderList';
 
 function App() {
   const [toggleMenu, setToggleMenu] = useState(false)
@@ -29,7 +33,8 @@ function App() {
       <Header openmenu={openMenu}/>
       <SideBar open={toggleMenu}/>
       <Routes> 
-        <Route path='/' element={<Products />}/>
+        <Route path='/' element={<Products />}></Route>
+        <Route path='/:brand' element={<Products/>}/>
         <Route path="/product/::id" element={<ProductDetail />}/>
         <Route path="/cart/:id" element={<Cart />}/>
         <Route path='/signin' element={<Signin />} />
@@ -39,6 +44,12 @@ function App() {
         <Route path="/payment" element={<Payment />}/>
         <Route path="/placeorder" element={<PlaceOrder />}/>
         <Route path="/order/:id" element={<OrderDetail />}/>
+        <Route path="/orderhistory" element={<OrderHistory/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="orderlist" element={<OrderList />}/>
+        </Route>
+        
       </Routes>
      </>
   );

@@ -7,9 +7,10 @@ const SideBar = (props) => {
         <SideBarContainer {...props}>
             <h3 className='title'>Categories</h3>
             <Categories>
-                <CategorieLi to="/mercedes">Mercedes-Benz</CategorieLi>
-                <CategorieLi to="lamborghini">Lamborghini</CategorieLi>
-                <CategorieLi to='bentley'>Bentley</CategorieLi>
+                <CategorieLi to="marvel">Marvel</CategorieLi>
+                <CategorieLi to="dc">DC</CategorieLi>
+                <CategorieLi to='archie'>Archie</CategorieLi>
+                <CategorieLi to='/'>All</CategorieLi>
             </Categories>
         </SideBarContainer>
     )

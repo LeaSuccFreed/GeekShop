@@ -1,12 +1,13 @@
 import Axios from 'axios';
 import Cookie from 'js-cookie';
-import {put, takeLatest, all, select} from 'redux-saga/effects';
+import {put, takeLatest, all, select, takeEvery} from 'redux-saga/effects';
 import { productSaveFail, productSaveSuccess } from './createProductslice';
 import { productDeleteFail, productDeleteSuccess } from './deleteProductSlice';
+import { productFilterFail, productFilterSuccess } from './filterProductSlice';
 
 const getSignInUserData = state => state.signin
 
-////Worker////
+////Worker////////////////////////////////////////////////
 
 function* saveProductWorker({payload}){
     try {
@@ -42,7 +43,19 @@ function* deleteProductWorker({payload}){
     }
 }
 
-////Watcher////
+function* productFilterWork({payload}){
+    try {
+        console.log(payload)
+        const {products, brand} = payload
+        const data = products.data.filter(product => product.brand.toLowerCase() === brand);
+        console.log(products)
+        yield put(productFilterSuccess(data))
+    } catch (error) {
+        yield put(productFilterFail(error))
+    }
+}
+
+////Watcher//////////////////////////////////////////////////
 
 function* saveProductWatcher(){
     yield takeLatest('createProduct/productSaveRequest', saveProductWorker)
@@ -52,10 +65,15 @@ function* deleteProductWatcher(){
     yield takeLatest('productDelete/productDeleteRequest', deleteProductWorker)
 }
 
+function* filterProductsWarcher(){
+    yield takeEvery('filterProduct/productFilterRequest', productFilterWork)
+}
+
 
  export function* rootProductsaga(){
     yield all([
         saveProductWatcher(),
         deleteProductWatcher(),
+        filterProductsWarcher(),
     ])
 }

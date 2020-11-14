@@ -7,11 +7,11 @@ const orderSchema = new Schema({
             qty: {type: Number, required: true},
             image: {type: String, required: true},
             price: {type: Number, required: true},
-            // id: {
-            //     type: mongoose.Schema.Types.ObjectId,
-            //     ref: 'Product',
-            //     required: true,
-            // }
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            }
         }
     ],
     shipping: {
@@ -22,6 +22,12 @@ const orderSchema = new Schema({
         country: {type: String, required: true},
     },
     paymentMethod: {type: String, required: true},
+    paymentResult: {
+        id: String, 
+        status: String,
+        update_time: String,
+        email_address: String,
+    },
     itemsPrice: {type: Number, required: true},
     shippingPrice: {type: Number, required: true},
     taxPrice: {type: Number, required: true},
@@ -30,7 +36,7 @@ const orderSchema = new Schema({
     isPaid: {type: Boolean, default: false},
     paidAt: {type: Date },
     isDelivered: {type: Boolean, default: false},
-    deliverAt: { type: Date },
+    deliveredAt: { type: Date },
     },
     {
         timestamps: true,
