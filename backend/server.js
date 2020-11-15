@@ -10,7 +10,7 @@ import orderRouter from './routes/orderRouter.js';
 
 dotenv.config()
 const mongodbUrl = config.MONGODB_URL;
-mongoose.connect(process.env.MONGODBURI || mongodbUrl, {
+mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
