@@ -8,21 +8,23 @@ import userRoute from './routes/userRoute.js';
 import productRoute from './routes/productRoute.js'
 import orderRouter from './routes/orderRouter.js';
 
-const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
+// const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
 
 dotenv.config()
 const mongodbUrl = config.MONGODB_URL;
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(express.urlencoded({extended: false}));
+
 mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
 
 }).catch(error => console.log(error.reason))
-
-const app = express();
-
-app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
@@ -31,9 +33,14 @@ app.get("/api/config/paypal", (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 })
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('../frontend/build'))
-}
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static('../frontend/build'))
+// }
+
+const __dirname  = path.resoslve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/frontend/build/index.html')))
 
 app.listen(PORT, ()=>{
     console.log(`Server running at ${PORT}`)
