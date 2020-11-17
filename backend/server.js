@@ -8,8 +8,11 @@ import userRoute from './routes/userRoute.js';
 import productRoute from './routes/productRoute.js'
 import orderRouter from './routes/orderRouter.js';
 
+const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
+
 dotenv.config()
 const mongodbUrl = config.MONGODB_URL;
+const PORT = process.env.PORT || 5000
 mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -18,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || mongodbUrl, {
 }).catch(error => console.log(error.reason))
 
 const app = express();
-const PORT = process.env.PORT || 5000
+
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);

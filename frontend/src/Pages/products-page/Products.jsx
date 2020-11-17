@@ -20,6 +20,7 @@ const Products = () => {
             } else {
                 dispatch(fetchStart()) 
             }
+            console.log(data)
             
     }, [brand, dispatch])
 
