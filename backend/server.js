@@ -7,8 +7,6 @@ import productRoute from './routes/productRoute.js'
 import orderRouter from './routes/orderRouter.js';
 import path from 'path'
 
-// const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
-
 dotenv.config()
 const mongodbUrl = process.env.MONGODB_URL || 'mongodb://localhost/carShop';
 const PORT = process.env.PORT || 8080
