@@ -1,8 +1,8 @@
-import express, { Router } from 'express'
-import Product from '../models/productModel'
-import {getToken, isAdmin, isAuth} from '../util'
+import express from 'express'
+import Product from '../models/productModel.js'
+import {getToken, isAdmin, isAuth} from '../util.js'
 
-const router = Router()
+const router = express.Router()
 
 router.get('/', async (req, res) => {
     const products = await Product.find({});

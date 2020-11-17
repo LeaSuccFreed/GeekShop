@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute.js';
