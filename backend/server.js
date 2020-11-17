@@ -1,8 +1,6 @@
 import express from 'express';
 import mongoose, { Mongoose } from 'mongoose';
 import dotenv from 'dotenv';
-import config from './config';
-import data from './data.js';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute.js';
 import productRoute from './routes/productRoute.js'
@@ -12,7 +10,7 @@ import path from 'path'
 // const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
 
 dotenv.config()
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL || 'mongodb://localhost/carShop';
 const PORT = process.env.PORT || 8080
 
 const app = express();
