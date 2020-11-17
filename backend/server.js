@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute.js';
 import productRoute from './routes/productRoute.js'
 import orderRouter from './routes/orderRouter.js';
+import path from 'path'
 
 // const MONGODB_URII = `mongodb+srv://Branislav:Branislav@geekuniverse.psgvz.mongodb.net/<dbname>?retryWrites=true&w=majority`
 
@@ -34,13 +35,17 @@ app.get("/api/config/paypal", (req, res) => {
 })
 
 // if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static('../frontend/build'))
+//     app.use(express.static('/frontend/build'))
 // }
 
-const __dirname  = path.resoslve();
+const __dirname  = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/frontend/build/index.html')))
+
+app.use((err, req, res, next) => {
+    res.status(500).send({message: err.message})
+})
 
 app.listen(PORT, ()=>{
     console.log(`Server running at ${PORT}`)
