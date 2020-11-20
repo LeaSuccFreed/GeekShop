@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import {device} from '../size_style'
 
 import {ReactComponent as LoginLogo} from '../../assets/log-in.svg'
 import {ReactComponent as MenuLogo} from '../../assets/menu.svg'
 
 export const HeaderContainer = styled.div`
     display: flex;
+    width: 100%;
     flex-direction: column;
     height: 12.5vh;/*80px;*/
+    
 `
 
 export const UpperHeaderContainer = styled.div`
@@ -20,6 +23,18 @@ export const UpperHeaderContainer = styled.div`
         display: flex;
         align-items: center;
         padding-right: 5%;
+
+        @media ${device.mobileL}{
+            justify-content: flex-end;
+            padding-right: 2%;
+        }
+
+        & a{
+            width: 100px;
+            @media ${device.mobileL}{
+            width: 75px;
+        }
+        }
     }
 `
 

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {  useParams } from 'react-router-dom'
 import {PayPalButton} from 'react-paypal-button-v2'
 import Button from '../../components/button/Button'
-import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, TotalContainer} from '../cart-page/cart_style'
-import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container} from './order-detail.style'
+import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer} from '../cart-page/cart_style'
+import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container, TotalContainer} from './order-detail.style'
 import { detailOrderRequest } from '../../Redux/features/order/orderDetailSlice'
 import {orderPayRequest, orderPayReset} from '../../Redux/features/order/orderPaySlice'
 import Axios from 'axios'
@@ -66,15 +66,15 @@ const OrderDetail = () => {
           loading ? <div>...Loading</div> :
           error ? <div>{error}</div> :
             <PlaceOrderContainer> 
-              <h1>Order: {order._id}</h1>
+              <h1 className="orderId forMargin">Order: {order._id}</h1>
               <PlaceOrderInfo>
-                                  <div>
+                                  <div className="forMargin">
                                     <h3>Shipping</h3>
                                     <p><strong>Name:</strong> {shipping.fullName} </p>
-                                    <p><strong>Address:</strong> {shipping.address}, {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
+                                    <p><strong>Address:</strong> {shipping.address}, <br/> {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
                                     {isDelivered ? <p>Delivered at {deliveredAt}</p> : <p>Not Delivered</p>}
                                   </div>
-                                  <div>
+                                  <div className="forMargin">
                                     <h3>Payment</h3>
                                     <div>
                                       <strong>Payment Method:</strong> {paymentMethod}
@@ -82,12 +82,12 @@ const OrderDetail = () => {
                                     </div>
                                   </div>
                 </PlaceOrderInfo>
-                <h3>Products: </h3>
+                <h3 className="forMargin">Products: </h3>
               {
               orderItems.map(item => {
                 const {id, name, image, price, qty} = item
                 return(
-                  <ProductInfoContainer key={id}>  
+                  <ProductInfoContainer className="productInfo" key={id}>  
                   <Img src={image}/>
                   <NamePriceContainer>
                     <h3>{name}</h3> 
@@ -108,25 +108,25 @@ const OrderDetail = () => {
         
         <PlaceOrderAction>
           <TotalContainer>
-            <ul>
+          <ul>
               <li>
                 <h3>Order Summary</h3>
               </li>
               <li>
-                <div>Items</div>
-                <div>${itemsPrice}</div>
+                <div className="task"> <strong>Items:</strong> </div>
+                <div className="inf">${itemsPrice}</div>
               </li>
               <li>
-                <div>Shipping</div>
-                <div>${shippingPrice}</div>
+                <div className="task"> <strong>Shipping:</strong> </div>
+                <div className="inf">${shippingPrice}</div>
               </li>
               <li>
-                <div>Tax</div>
-                <div>${taxPrice}</div>
+                <div className="task"> <strong>Tax:</strong> </div>
+                <div className="inf">${taxPrice}</div>
               </li>
               <li>
-                <div>Order total</div>
-                <div>${totalPrice}</div>
+                <div className="task"> <strong>Order total:</strong> </div>
+                <div className="inf">${totalPrice}</div>
               </li>
             </ul>
 

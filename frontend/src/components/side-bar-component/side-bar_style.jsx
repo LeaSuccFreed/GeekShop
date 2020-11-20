@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SideBarContainer = styled.aside`
-    position: fixed;
+    position: absolute;
     transition: all 0.5s;
     transform: ${({open}) => open ? 'translateX(0)' : 'translateX(-30rem)' };
     width: 9rem;

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import {ReactComponent as BuyIconSVG} from '../../assets/buy.svg'
+import {device} from '../size_style'
 
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 370px;
-    height: 69.070735vh;
+    height: 415px/*69.070735vh*/;
     margin-top: 6vh;
     margin-bottom: 2vh;
     box-shadow: -3px 26px 25px -29px rgba(0,0,0,0.3);
@@ -28,7 +28,7 @@ export const ProductImg = styled.img`
 
 export const FooterProductContainer = styled.div`
     width: 100%;
-    height: 16.802083vh/*106px*/;
+    height:106px/*106px*/;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -48,26 +48,3 @@ export const Price = styled.h4`
     color: black;
 `
 
-export const ButtonBuy = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 6vh;
-    border: none;
-    align-self: center;
-    background: none;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: white;
-    margin-top: 1.30208333vh;
-    cursor: pointer;
-
-    &:hover{
-        background: black;
-    }
-`
-export const BuyIcon = styled(BuyIconSVG)`
-width: 32px;
-height: 32px;
-`

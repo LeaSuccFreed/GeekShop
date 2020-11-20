@@ -31,8 +31,7 @@ const Cart = () => {
           cartItems.map(item => {
             const {id, name, image, price, qty} = item
             return(
-              <CartItemsContainer key={id}>
-                <ProductInfoContainer>
+                <ProductInfoContainer key={id}>
                   <Img src={image}/>
                   <NamePriceContainer>
                     <h3>{name}</h3> 
@@ -55,7 +54,6 @@ const Cart = () => {
                     <TrashCan/>
                   </TrashCanContainer>
                 </ProductInfoContainer>
-              </CartItemsContainer>
             )
             
           })

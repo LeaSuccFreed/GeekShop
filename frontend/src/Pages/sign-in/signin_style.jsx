@@ -25,6 +25,10 @@ export const FormContainer = styled.ul`
     list-style: none;
     padding: 0;
 
+    & .newHere{
+        padding-top: 15px;
+    }
+
     & h2{
         font-weight: bold;
     }
@@ -55,6 +59,7 @@ export const FormContainer = styled.ul`
         transition: transform 80ms ease-in;
         margin-top: 8px;
         cursor: pionter;
+        padding-bottom: 10px;
 
         &:hover{
         color: #ffffff !important;

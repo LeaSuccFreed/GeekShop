@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, 
-         TotalContainer, Button} from '../cart-page/cart_style'
-import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container} from './place-order_style'
+import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, Button} from '../cart-page/cart_style'
+import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container, TotalContainer} from './place-order_style'
 import CheckoutSteps from '../../components/checkoutSteps/CheckoutSteps'
 import { createOrderRequest, createOrderReset } from '../../Redux/features/order/orderSlice'
 
@@ -43,30 +42,30 @@ const PlaceOrder = () => {
       <Container>
 
             <PlaceOrderContainer> 
-              <CheckoutSteps step1 step2 step3 step4 />
+              <CheckoutSteps className="checkoustepsMargin" step1 step2 step3 step4 />
 
               <PlaceOrderInfo>
-                                  <div>
+                                  <div className="forMargin">
                                     <h3>Shipping</h3>
                                     <p><strong>Name:</strong> {shipping.fullName} </p>
                                     <p><strong>Email:</strong> {userInfo.email}</p>
-                                    <p><strong>Address:</strong> {shipping.address}, {shipping.city}, {shipping.postalCode}, {shipping.country}</p>
+                                    <p><strong>Address:</strong> {shipping.address},<br/> {shipping.city},  {shipping.postalCode}, {shipping.country}</p>
                                     <p></p>
                                   </div>
-                                  <div>
+                                  <div className="forMargin">
                                     <h3>Payment</h3>
                                     <div>
                                      <strong>Payment Method:</strong> {paymentMethod}
                                     </div>
                                   </div>
                 </PlaceOrderInfo>
-                <h3>Products: </h3>
+                <h3 className="forMargin">Products: </h3>
               {
               cartItems.map(item => {
                 const {id, name, image, price, qty} = item
                 return(
                 
-                <ProductInfoContainer>  
+                <ProductInfoContainer className="productInfo">  
                 <Img src={image}/>
                 <NamePriceContainer>
                   <h3>{name}</h3> 
@@ -92,20 +91,20 @@ const PlaceOrder = () => {
                 <h3>Order Summary</h3>
               </li>
               <li>
-                <div>Items</div>
-                <div>${itemsPrice}</div>
+                <div className="task"> <strong>Items:</strong> </div>
+                <div className="inf">${itemsPrice}</div>
               </li>
               <li>
-                <div>Shipping</div>
-                <div>${shippingPrice}</div>
+                <div className="task"> <strong>Shipping:</strong> </div>
+                <div className="inf">${shippingPrice}</div>
               </li>
               <li>
-                <div>Tax</div>
-                <div>${taxPrice}</div>
+                <div className="task"> <strong>Tax:</strong> </div>
+                <div className="inf">${taxPrice}</div>
               </li>
               <li>
-                <div>Order total</div>
-                <div>${totalPrice}</div>
+                <div className="task"> <strong>Order total:</strong> </div>
+                <div className="inf">${totalPrice}</div>
               </li>
             </ul>
           </TotalContainer>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../components/size_style'
 
 export const Container = styled.div`
     display: flex;
@@ -17,34 +18,46 @@ export const Container = styled.div`
     }
 `
 
-export const CartItemsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 11vh;
-    width: 790px
-`
-
-export const ProductInfoContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    margin-bottom: 30px;
-
-    -webkit-box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
-    -moz-box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
-    box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
-`
-
-
 export const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 
 `
+
+export const ProductInfoContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 790px;
+    margin-top: 11vh;
+    align-items: center;
+    height: 200px;
+    margin-bottom: 30px;
+
+    -webkit-box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
+    -moz-box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
+    box-shadow: 15px 21px 36px -2px rgba(0,0,0,0.32);
+
+
+    
+
+    @media ${device.tablet}{
+        width: 660px;
+    }
+
+    @media ${device.mobileL}{
+        flex-direction: column;
+        width: 300px;
+        height: 350px;
+        box-shadow: 8px 54px 89px -68px rgba(0,0,0,0.75);
+-webkit-box-shadow: 8px 54px 89px -68px rgba(0,0,0,0.75);
+-moz-box-shadow: 8px 54px 89px -68px rgba(0,0,0,0.75);
+    }
+
+`
+
+
+
 export const QtyContainer = styled.div`
     display: flex;
     align-items: center;
@@ -75,6 +88,12 @@ export const TrashCanContainer = styled.div`
     justify-content: center;
     margin-left: 5.55962%/*36px*/;
     cursor: pointer;
+
+    @media ${device.mobileL}{
+        height: 60px;
+        width: 100%;
+        margin-left: 0;
+    }
 `
 export const CheckoutContainer = styled.div`
     display: flex;

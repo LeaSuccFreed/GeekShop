@@ -1,9 +1,14 @@
 import styled from 'styled-components'
+import { device } from '../size_style'
 
 export const CheckoutStepsContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 35rem;
+    width: 560px;
+
+    @media ${device.mobileL}{
+        width: 300px;
+    }
 `
 
 export const Steps = styled.div`
@@ -13,5 +18,9 @@ export const Steps = styled.div`
     &.active{
         border-top: 2px solid black;
         color: #000000
+    }
+
+    @media ${device.mobileL}{
+        font-size: 14px
     }
 `

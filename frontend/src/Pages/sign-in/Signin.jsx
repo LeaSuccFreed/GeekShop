@@ -45,9 +45,9 @@ const Signin = () => {
                     <li>
                         <button type="submit" className="button">Sign In</button>
                     </li>
-                    <li><p>Hello friend new here?</p></li>
+                    <li className="newHere"><p>Hello friend new here?</p></li>
                     <li>
-                        <Link className="newAcct" to={redirect === "/" ? "register" : `/register?redirect=${redirect}`}>Create Account</Link>
+                        <Link className="newAcct" to={redirect === "/" ? "/register" : `/register?redirect=${redirect}`}>Create Account</Link>
                     </li>
                     
                 </FormContainer>
