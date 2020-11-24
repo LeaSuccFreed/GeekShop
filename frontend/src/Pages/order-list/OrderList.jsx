@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/Loading'
 import { orderDeleteRequest, orderDeleteReset } from '../../Redux/features/order/orderDeleteSlice'
 import { orderListRequest } from '../../Redux/features/order/orderListSlice'
 import { Container, Table } from './oder-list_style'
@@ -25,22 +26,22 @@ const OrderList = () => {
     return (
         <Container>
             <h2 className="title">Orders</h2>
-            {loadingDelete && <p>...Loading</p>}
+            {loadingDelete && <Loading/>}
             {errorDelete && <p>{errorDelete}</p>}
             {
-            loading ? <div>...Loading</div> : 
+            loading ? <Loading/> : 
             error ? <div>{error}</div> : 
             (
                 <Table>
                     <thead>
                         <tr className="tr-p">
                             <th className="th-item tr-c id">ID</th>
-                            <th className="th-item tr-c">USER</th>
-                            <th className="th-item tr-c">DATE</th>
-                            <th className="th-item tr-c">TOTAL</th>
-                            <th className="th-item tr-c">PAID</th>
-                            <th className="th-item tr-c">DELIVERED</th>
-                            <th className="th-item tr-c">ACTIONS</th>
+                            <th className="th-item tr-c name">USER</th>
+                            <th className="th-item tr-c date">DATE</th>
+                            <th className="th-item tr-c total">TOTAL</th>
+                            <th className="th-item tr-c paid">PAID</th>
+                            <th className="th-item tr-c delivered">DELIVERED</th>
+                            <th className="th-item tr-c actions">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,11 +49,11 @@ const OrderList = () => {
                             return(
                                 <tr className="tr-p" key={order._id}>
                                     <td className="td-item tr-c id">{order._id}</td>
-                                    <td className="td-item tr-c">{order.user.name}</td>
-                                    <td className="td-item tr-c">{order.createdAt.substring(0, 10)}</td>
-                                    <td className="td-item tr-c">{order.totalPrice}</td>
-                                    <td className="td-item tr-c">{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                                    <td className="td-item tr-c">{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'No'}</td>
+                                    <td className="td-item tr-c name">{order.user.name}</td>
+                                    <td className="td-item tr-c date">{order.createdAt.substring(0, 10)}</td>
+                                    <td className="td-item tr-c total">{order.totalPrice}</td>
+                                    <td className="td-item tr-c paid">{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                                    <td className="td-item tr-c delivered">{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'No'}</td>
                                     <td>
                                         <button type="button" onClick={() => {navigate(`/order/${order._id}`, {replace: true})}}>Details</button>
                                         <button type="button" onClick={() => deleteHandler(order)}>Delete</button>

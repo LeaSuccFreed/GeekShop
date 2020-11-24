@@ -6,6 +6,7 @@ import PrimaryButton from '../../components/primary-button/PrimaryButton'
 import {Container, Form, FormContainer} from './profule_style'
 import { userUpdateProfileRequest, userUpdateProfileReset } from '../../Redux/features/user/userUpdateProfileSlice'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/loading/Loading'
 const Profile = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -54,10 +55,10 @@ const Profile = () => {
                     loading ? <p>...Loding</p> :
                     error ? <p>{error}</p> : (
                         <>
-                        {updateLoading && <p>...Loading</p>}
+                        {updateLoading && <Loading/>}
                         {updateError && <p>{updateError}</p>}
                         {updateSuccess && <p>Profile Updated Successfully</p>}
-                        <FormContainer>
+                        <FormContainer className="name">
                             <label htmlFor="name">Name</label>
                             <input id="name" 
                                     type="text"
@@ -65,7 +66,7 @@ const Profile = () => {
                                     value={name}
                                     onChange={e => setName(e.target.value)}/>
                         </FormContainer>
-                        <FormContainer>
+                        <FormContainer className="email">
                             <label htmlFor="email">Email</label>
                             <input id="email" 
                                     type="text"
@@ -74,7 +75,7 @@ const Profile = () => {
                                     onChange={e => setEmail(e.target.value)}/>
 
                         </FormContainer>    
-                        <FormContainer>
+                        <FormContainer className="password">
                             <label htmlFor="password">Password</label>
                             <input id="password" 
                                     type="text"
@@ -82,7 +83,7 @@ const Profile = () => {
                                     onChange={e => setPassword(e.target.value)}
                                     />
                         </FormContainer>
-                        <FormContainer>
+                        <FormContainer className="confirmPasword">
                             <label htmlFor="consfirmPassword">Confirm Password</label>
                             <input id="consfirmPassword" 
                                     type="text"
@@ -92,7 +93,7 @@ const Profile = () => {
                                     ></input>
                         </FormContainer>
                         
-                            <PrimaryButton className='cButton' type="submit">Update</PrimaryButton>
+                            <PrimaryButton type="submit">Update</PrimaryButton>
                     
                         </>
                         

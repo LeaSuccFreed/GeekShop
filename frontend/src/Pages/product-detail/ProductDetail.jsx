@@ -27,7 +27,6 @@ const ProductDetail = () => {
         navigate(`/cart/${id}?qty=${qty}`, {replace: true})
     }
     
-    // const product = data.products.find(car => car._id === id)
     const {image, name, description, price, countInStock, brand} = carDetail.carDetails;
     return (
         <ProductPageContainer>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../components/size_style'
 
 export const Container = styled.div`
     width: 100%;
@@ -17,11 +18,15 @@ export const Header = styled.div`
     & .eaPdfc, h3{
         margin: 1%;
     }
+
+    @media ${device.mobileL}{
+        padding-top: 15px;
+    }
 `
 
 export const Form = styled.form`
     display: flex;
-    width: 830px;
+    width: 70%/*830px*/;
     height: ${props => props.height};
     justify-content: space-evenly;
     align-items: center;
@@ -40,6 +45,18 @@ export const FormContainer = styled.ul`
     & li:first-child{
         position: absolute;
         top: 10rem;
+
+        @media ${device.laptopL}{
+            top: 5rem
+        }
+
+        @media ${device.laptop}{
+            top: 5.5rem;
+        }
+
+        @media ${device.mobileL}{
+            display: none;
+        }
     }
     & h2{
         font-weight: bold;
@@ -49,7 +66,6 @@ export const FormContainer = styled.ul`
         display: flex;
         justify-content: center;
         width: 300px;
-
     }
 
     & input{
@@ -58,11 +74,12 @@ export const FormContainer = styled.ul`
         padding: 12px 15px;
         margin: 8px 0;
         border-radius: 10px;
+        border: 2px solid black;
         outline: 0;
         cursor: text;
 
         &:focus{
-            border: 2px solid black
+            border: 2px solid white
         }
     }
 
@@ -86,7 +103,7 @@ export const FormContainer = styled.ul`
         border: 2px solid #fafafa;
         background: none;
         padding: 0.6rem 1.2rem;
-        color: #fff;
+        color: black;
         font-weight: 500;
         font-size: 0.95rem;
         letter-spacing: 0.5px;

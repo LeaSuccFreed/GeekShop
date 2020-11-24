@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useLocation, useNavigate} from "react-router-dom"
+import Loading from '../../components/loading/Loading'
 import { userRegisterInit } from '../../Redux/features/user/registerSlice'
 import { Form, FormContainer, Container } from '../sign-in/signin_style'
 
@@ -33,7 +34,7 @@ const Signin = () => {
                     <li><h2>Sign Up</h2></li>
                     
                     <li>
-                        {signinInit && <div>Loading...</div>}
+                        {signinInit && <Loading/>}
                         {signinFailure && <div>{signinFailure}</div>}
                     </li>
 

@@ -8,6 +8,7 @@ export const SideBarContainer = styled.aside`
     width: 9rem;
     min-height: 100vh;
     background-color: rgba(0, 0, 0, .95);
+    top:79px;
 ;
     z-index: 2;
 

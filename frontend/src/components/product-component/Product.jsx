@@ -4,7 +4,7 @@ import { CarTitle, ProductContainer, ProductImg, ProductImgContainer, Price, But
 const Product = ({id, img, name, price, }) => {
     return (
         <ProductContainer>
-            <ProductImgContainer to={`product/:${id}`}>
+            <ProductImgContainer to={`/product/:${id}`}>
                 <ProductImg src={img}/>
             </ProductImgContainer>
             <FooterProductContainer>

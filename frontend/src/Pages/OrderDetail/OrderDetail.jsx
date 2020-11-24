@@ -9,6 +9,7 @@ import { detailOrderRequest } from '../../Redux/features/order/orderDetailSlice'
 import {orderPayRequest, orderPayReset} from '../../Redux/features/order/orderPaySlice'
 import Axios from 'axios'
 import { orderDeliverRequest, orderDeliverReset } from '../../Redux/features/order/orderDeliverSlice'
+import Loading from '../../components/loading/Loading'
 
 const OrderDetail = () => {
     // const navigate = useNavigate();
@@ -63,7 +64,7 @@ const OrderDetail = () => {
     return (
       <Container>
         {
-          loading ? <div>...Loading</div> :
+          loading ? <Loading /> :
           error ? <div>{error}</div> :
             <PlaceOrderContainer> 
               <h1 className="orderId forMargin">Order: {order._id}</h1>
@@ -136,7 +137,7 @@ const OrderDetail = () => {
           {errorPay && <p>{errorPay}</p>}
           {loadingPay && <p>...Loading</p>} 
 
-					{!sdkReady ? <p>...Loading</p> : 
+					{!sdkReady ? <Loading /> : 
 						<PayPalButton amount={ totalPrice } onSuccess={successPaymentHandler}></PayPalButton>
 					}
 				</div>

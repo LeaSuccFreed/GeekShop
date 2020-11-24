@@ -23,8 +23,7 @@ box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.37);
     flex-direction: column;
     margin-top: 0;
     box-shadow: none;
-    
-
+    margin-top: 2vh;
 }
 `
 

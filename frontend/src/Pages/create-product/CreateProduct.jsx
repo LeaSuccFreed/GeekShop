@@ -9,6 +9,7 @@ import { Form, FormContainer, Container, Header } from './createProduct_style'
 import { productDeleteRequest } from '../../Redux/features/product/deleteProductSlice'
 import PrimaryButton from '../../components/primary-button/PrimaryButton'
 import Button from '../../components/button/Button'
+import Loading from '../../components/loading/Loading'
 
 
 const CreateProduct = () => {
@@ -69,7 +70,7 @@ const CreateProduct = () => {
                 <FormContainer>
                     <li>
                         <h2>Create Product</h2>
-                        {loading && <p>Loading...</p>}
+                        {loading && <Loading/>}
                         {error && <p>{error}</p>}
                     </li>
 

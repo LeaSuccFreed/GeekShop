@@ -25,7 +25,7 @@ const Cart = () => {
       <Container>
         <h3 className="cartTitle">Shopping Cart</h3>
         {
-          cartItems === undefined ? <div>Cart is Empty</div> : 
+          cartItems.length === 0 ? <div className="emptyCart">Cart is Empty</div> : 
             <Info>
           {
           cartItems.map(item => {

@@ -5,11 +5,12 @@ import { fetchStart } from '../../Redux/features/fetchCarsProducts/fetchCars'
 import { useDispatch, useSelector  } from 'react-redux'
 import { useLocation, useParams } from 'react-router-dom'
 import { productFilterRequest, productFilterReset } from '../../Redux/features/product/filterProductSlice'
+import Loading  from '../../components/loading/Loading'
 const Products = () => {
     const products = useSelector(state => state.fetchCars)
     const {data: dt} = products
     const filterProduct = useSelector(state => state.filterProducts)
-    const {success} = filterProduct
+    // const {success} = filterProduct
     const dispatch = useDispatch()
     const {data, loading, error} = filterProduct.success ? filterProduct : products
     let {brand} = useParams()
@@ -27,7 +28,7 @@ const Products = () => {
     return (
         <ProductsContainer>
             {
-                loading ? (<div>Loading...</div>) :
+                loading ? (<Loading/>) :
                     error ? (<div>Error: `${error.message}`</div>) : 
                         data && data.map(product => {
                             const {_id, image, name, price} = product

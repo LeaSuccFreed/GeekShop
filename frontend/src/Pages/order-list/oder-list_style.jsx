@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import {device} from '../../components/size_style'
+
 
 export const Container = styled.div`
     display: flex;
@@ -8,7 +10,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    & .titel{
+    & .title{
         align-self: flex-start;
         padding-left: 4%;
     }
@@ -36,11 +38,40 @@ export const Table = styled.table`
         & .tr-c{
             display: flex;
             width: 12%;
+
+            @media ${device.tablet}{
+                width: 21%;
+            }
         }
 
         & .id{
             width: 27%;
             padding-left: 3%;
+           
+            @media ${device.tablet}{
+                width: 35%;
+            }
+        }
+
+        & .name{
+
+            @media ${device.mobileL}{
+                 width: 60%;
+            }
+           
+        }
+
+        & .paid, .delivered, .date{
+            @media ${device.tablet}{
+                display: none;
+            }
+        }
+
+        & .id, .date, .total, .paid, .delivered{
+            @media ${device.mobileL}{
+                display: none;
+            }
+            
         }
     }
 `

@@ -29,11 +29,6 @@ const Payment = () => {
                         <label htmlFor="paypal">Paypal</label>
                     </li>
 
-                    <li>
-                        <input type="radio" name="paymentMethod" placeholder="Payment Method" id="stripe" value='Stripe' onChange={e => setPaymentMethod(e.target.value)}></input> 
-                        <label htmlFor="paypal">Stripe</label>
-                    </li>
-
                     <button type="submit">Continue</button>
 
                     

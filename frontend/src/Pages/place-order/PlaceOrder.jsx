@@ -5,6 +5,7 @@ import { ProductInfoContainer, Img, QtyContainer, NamePriceContainer, Button} fr
 import {PlaceOrderContainer, PlaceOrderInfo, PlaceOrderAction, Container, TotalContainer} from './place-order_style'
 import CheckoutSteps from '../../components/checkoutSteps/CheckoutSteps'
 import { createOrderRequest, createOrderReset } from '../../Redux/features/order/orderSlice'
+import Loading from '../../components/loading/Loading'
 
 
 const PlaceOrder = () => {
@@ -111,7 +112,7 @@ const PlaceOrder = () => {
          <Button onClick={placeOrderhandler} type="submit" disabled={cartItems.length === 0}>Place Order</Button>
         </PlaceOrderAction>
 
-        {loadingOrder && <p>...Loading</p>  }
+        {loadingOrder && <Loading />  }
         {errorOrder && <div>{errorOrder}</div>}
       </Container>
     )

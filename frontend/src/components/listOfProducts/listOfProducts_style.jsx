@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {device} from '../size_style'
 
 export const Content = styled.div`
  display: flex;
@@ -36,12 +37,41 @@ width: 100%;
         width: 30%;
         align-self: center;
         text-align: left;
+
+        @media ${device.tablet}{
+            width: 39%;
+        }
+
+        @media ${device.mobileL}{
+            width: 78%;
+        }
         
     }
 
     & .else{
-        width: 15%;
+        width: 18%;
         text-align: left;
+    }
+
+    & .name{
+        width: 25%;
+    }
+
+    & .price{
+        padding-left: 4%;
+    }
+
+
+    & .name, .price, .category, .brand, .action{
+        @media ${device.mobileL}{
+            display: none;
+        }
+    }
+
+    & .brand, .category{
+        @media ${device.tablet}{
+            display: none;
+        }
     }
 }
 `

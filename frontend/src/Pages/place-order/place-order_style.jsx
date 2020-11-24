@@ -51,9 +51,9 @@ export const TotalContainer = styled.div`
         }
 
         & .inf{
-            width: 24px;
+            width: 49px;
             align-self: flex-end;
-            margin-left: 30%;
+            /* margin-left: 30%; */
         }
     }
 `

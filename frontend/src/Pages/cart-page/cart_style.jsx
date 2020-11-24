@@ -16,6 +16,23 @@ export const Container = styled.div`
         font-size: 24px;
         z-index: 0;
     }
+
+    & .emptyCart{
+        padding-top: 6%;
+        padding-right: 68%;
+        font-size: 18px;
+
+        @media ${device.laptop}{
+            padding-top: 11%;
+            padding-right: 43%;
+        }
+
+        @media ${device.mobileL}{
+            padding-top: 24%;
+            padding-right: 43%;
+        }
+    }
+
 `
 
 export const Info = styled.div`
@@ -27,7 +44,7 @@ export const Info = styled.div`
 
 export const ProductInfoContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 790px;
     margin-top: 11vh;
     align-items: center;
@@ -69,7 +86,7 @@ export const QtyContainer = styled.div`
 `
 export const Img = styled.img`
     width: 100px;
-    margin-left: 2vh;
+    margin-left: 2%;
 `
 export const NamePriceContainer = styled.div`
     display: flex;
@@ -86,7 +103,7 @@ export const TrashCanContainer = styled.div`
     background-color: black;
     align-items: center;
     justify-content: center;
-    margin-left: 5.55962%/*36px*/;
+    margin-left: 29.55962%/*36px*/;
     cursor: pointer;
 
     @media ${device.mobileL}{
