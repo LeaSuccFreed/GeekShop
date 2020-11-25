@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {Link, useLocation, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import CheckoutSteps from '../../components/checkoutSteps/CheckoutSteps'
 import { cartSavePaymentInit } from '../../Redux/features/cart/cart_redux'
 import { Form, FormContainer, Container } from '../sign-in/signin_style'

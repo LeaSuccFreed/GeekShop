@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import  fetchCarsSliceReducer  from './features/fetchCarsProducts/fetchCars'
+import  fetchComicsSlice  from './features/fetchComicsProducts/fetchComics'
 import fetchCarDetailsReducer from './features/fetchCarDetails/fetchCarDetails'
 import addCartItemsReducer from './features/cart/cart_redux'
 import signinSlice from './features/user/signinSlice'
@@ -18,8 +18,8 @@ import orderDeliverSlice from './features/order/orderDeliverSlice'
 import filterProductSlice from './features/product/filterProductSlice'
 
 const rootReducer = combineReducers({
-    fetchCars: fetchCarsSliceReducer,
-    fatchCarDetails: fetchCarDetailsReducer,
+    fetchComics: fetchComicsSlice,
+    fatchComicDetails: fetchCarDetailsReducer,
     cart: addCartItemsReducer,
     signin: signinSlice,
     register: registerSlice,

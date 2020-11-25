@@ -12,7 +12,6 @@ const getSignInUserData = state => state.signin
 function* saveProductWorker({payload}){
     try {
         const {userInfo} = yield select(getSignInUserData)
-        console.log(userInfo.token)
         if(!payload._id){
             const {data} = yield Axios.post('/api/products', payload, {headers: {
                 Authorization: 'Bearer ' + userInfo.token
@@ -30,7 +29,6 @@ function* saveProductWorker({payload}){
 }
 
 function* deleteProductWorker({payload}){
-    console.log(payload)
     try {
         const {userInfo} = yield select(getSignInUserData)
         const {data} = yield Axios.delete(`/api/products/${payload._id}`, {headers: {
@@ -45,10 +43,8 @@ function* deleteProductWorker({payload}){
 
 function* productFilterWork({payload}){
     try {
-        console.log(payload)
         const {products, brand} = payload
         const data = products.data.filter(product => product.brand.toLowerCase() === brand);
-        console.log(products)
         yield put(productFilterSuccess(data))
     } catch (error) {
         yield put(productFilterFail(error))

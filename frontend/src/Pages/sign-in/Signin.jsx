@@ -15,7 +15,6 @@ const Signin = () => {
     const dispatch = useDispatch()
     const { signinInit, userInfo, signinFailure } = useSelector(state => state.signin);
     const redirect = location.search ? location.search.split('=')[1] : '/'
-    console.log(redirect)
     useEffect(()=> {
        if(userInfo?._id){
            navigate(`/${redirect}`, {replace: true})

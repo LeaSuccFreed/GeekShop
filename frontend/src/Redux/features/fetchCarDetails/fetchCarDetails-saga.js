@@ -4,7 +4,6 @@ import { fetchDetailsSuccess } from './fetchCarDetails'
 
 ////WorkerSaga////
 function* fetchCarDetails({payload}){
-    console.log(payload)
     const carDetails = yield Axios.get(`/api/products/${payload}`)
     yield put(fetchDetailsSuccess(carDetails.data))
 }

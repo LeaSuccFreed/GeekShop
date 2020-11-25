@@ -1,19 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-// import data from '../../data'
 import { Description, ProductPageContainer, ImgContainer, Title, DescriptionParagraph, QtyContainer } from './product-detail.style'
-// import {ReactComponent as FuelStation} from '../../assets/fuel-station.svg'
-// import {ReactComponent as CarEngine} from '../../assets/engine.svg'
-// import {ReactComponent as Seat} from '../../assets/seat.svg'
-// import {ReactComponent as Car} from '../../assets/car.svg'
-// import {ReactComponent as Hp} from '../../assets/turbo.svg'
 import { fetchDetailStart } from '../../Redux/features/fetchCarDetails/fetchCarDetails'
 import PrimaryButton from '../../components/primary-button/PrimaryButton'
 
 
 const ProductDetail = () => {
-    const carDetail = useSelector(state => state.fatchCarDetails);
+    const comicDetail = useSelector(state => state.fatchComicDetails);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [qty, setQty] = useState(1)
@@ -27,7 +21,7 @@ const ProductDetail = () => {
         navigate(`/cart/${id}?qty=${qty}`, {replace: true})
     }
     
-    const {image, name, description, price, countInStock, brand} = carDetail.carDetails;
+    const {image, name, description, price, countInStock, brand} = comicDetail.carDetails;
     return (
         <ProductPageContainer>
             <ImgContainer src={image}/>

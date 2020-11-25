@@ -6,8 +6,8 @@ const initialState = {
     error: false,
 }
 
-export const fetchCarsSlice = createSlice({
-    name: 'fetchCars',
+export const fetchComicsSlice = createSlice({
+    name: 'fetchComics',
     initialState,
     reducers: {
         fetchStart: state => {
@@ -25,5 +25,5 @@ export const fetchCarsSlice = createSlice({
     }
 })
 
-export const {fetchStart, fetchSuccess, fetchFailure} = fetchCarsSlice.actions
-export default fetchCarsSlice.reducer
+export const {fetchStart, fetchSuccess, fetchFailure} = fetchComicsSlice.actions
+export default fetchComicsSlice.reducer

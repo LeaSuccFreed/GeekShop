@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Cart from '../cart-component/Cart'
-import SearchBar from '../search-bar/SearchBar'
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {HeaderContainer, UpperHeaderContainer, Gold, LowerHeaderContainer, LoginIcon, MenuIcon, Title, DropDownContainer, Lnk} from './header_style'

@@ -23,7 +23,6 @@ function* signinWorker({payload}){
 
 function* registerWorker({payload}){
     const {name, email, password} = payload;
-    console.log(payload)
     try {
         const {data} = yield Axios.post("/api/users/register", {name, email, password});
         yield put(userRegisterSuccess(data));

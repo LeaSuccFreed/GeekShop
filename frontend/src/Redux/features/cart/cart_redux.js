@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import Cookie from 'js-cookie'
 const itemsCart = Cookie.getJSON("itemsCart") || []; 
 const shippingInfo = Cookie.getJSON("shippingInfo") || {}
-// console.log(itemsCart)
 let initialState = {
     cartItems: itemsCart,
     adding: false,
@@ -40,7 +39,6 @@ const cartSlice = createSlice({
             state.removing = true;
         },
         removeItemFromCart: (state, {payload}) => {
-            console.log(payload)
             state.cartItems = state.cartItems.filter(pItem => pItem.id !== payload);
             state.removing = false;
         },

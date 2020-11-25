@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import {ReactComponent as CartLogo} from '../../assets/cart.svg'
-import {ReactComponent as DollarSign} from '../../assets/dollar.svg'
 
 const logoXY = {
     width: '25px',
@@ -19,11 +18,6 @@ export const CartIcon = styled(CartLogo)`
     width: ${logoXY.width};
     height: ${logoXY.height};
     cursor: pointer;
-`
-
-export const DollarIcon = styled(DollarSign)`
-    width: ${logoXY.width};
-    height: ${logoXY.height};
 `
 
  export const PayContainer = styled.div`

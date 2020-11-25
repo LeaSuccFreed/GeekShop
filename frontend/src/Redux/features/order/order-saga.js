@@ -34,7 +34,6 @@ function* detailsOrderWorker({payload}){
         const { data } = yield Axios.get(`/api/orders/${payload}`, { headers: {
             Authorization: `Bearer ${userInfo.token}`
         } })
-        console.log(data);
         yield put(orderDetailSuccess(data))
     } catch (error) {
         const message = 

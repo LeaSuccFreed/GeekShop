@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate} from "react-router-dom"
 import ListOfProducts from '../../components/listOfProducts/ListOfProducts'
 import { productSaveRequest } from '../../Redux/features/product/createProductslice'
-import { fetchStart } from '../../Redux/features/fetchCarsProducts/fetchCars'
+import { fetchStart } from '../../Redux/features/fetchComicsProducts/fetchComics'
 import { Form, FormContainer, Container, Header } from './createProduct_style'
 import { productDeleteRequest } from '../../Redux/features/product/deleteProductSlice'
 import PrimaryButton from '../../components/primary-button/PrimaryButton'

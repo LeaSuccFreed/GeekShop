@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { userDetailsRequest } from '../../Redux/features/user/userDetailsSlice'
 import PrimaryButton from '../../components/primary-button/PrimaryButton'
 
-import {Container, Form, FormContainer} from './profule_style'
+import {Container, Form, FormContainer} from './profile_style'
 import { userUpdateProfileRequest, userUpdateProfileReset } from '../../Redux/features/user/userUpdateProfileSlice'
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading'
@@ -35,7 +35,6 @@ const Profile = () => {
             if(!user){
             dispatch(userUpdateProfileReset())
             dispatch(userDetailsRequest(userInfo._id))
-            console.log('Something is wrong')
             } else {
                 setName(userInfo.name);
                 setEmail(userInfo.email);

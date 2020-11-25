@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react'
 import Product from '../../components/product-component/Product'
 import {ProductsContainer} from './products_styles'
-import { fetchStart } from '../../Redux/features/fetchCarsProducts/fetchCars'
+import { fetchStart } from '../../Redux/features/fetchComicsProducts/fetchComics'
 import { useDispatch, useSelector  } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { productFilterRequest, productFilterReset } from '../../Redux/features/product/filterProductSlice'
+import {selectComicsItems} from '../../Redux/features/fetchComicsProducts/fetchComicsReselect'
 import Loading  from '../../components/loading/Loading'
 const Products = () => {
-    const products = useSelector(state => state.fetchCars)
+    const products = useSelector(selectComicsItems)
     const {data: dt} = products
     const filterProduct = useSelector(state => state.filterProducts)
-    // const {success} = filterProduct
     const dispatch = useDispatch()
     const {data, loading, error} = filterProduct.success ? filterProduct : products
     let {brand} = useParams()
@@ -21,7 +21,6 @@ const Products = () => {
             } else {
                 dispatch(fetchStart()) 
             }
-            console.log(data)
             
     }, [brand, dispatch])
 
