@@ -4,12 +4,13 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { addToCartStart, removeFromCartStart } from '../../Redux/features/cart/cart_redux'
 import {ReactComponent as TrashCan} from '../../assets/trash-can.svg'
 import { CartItemsContainer, CheckoutContainer, Container, ProductInfoContainer, Img, QtyContainer, NamePriceContainer, TrashCanContainer, TotalContainer, Button, Info } from './cart_style'
+import {selectCart} from '../../Redux/features/cart/cartReselect'
 
 const Cart = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const {cartItems} = useSelector(state => state.cart);
+    const {cartItems} = useSelector(selectCart);
     const {id} = useParams();
     const qty = location ? Number(location.search.split('=')[1]) : 1;
     const removeFromCart = (productId) => {

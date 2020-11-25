@@ -7,7 +7,6 @@ export const Container = styled.div`
     top: 300px;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
 `
 
 const loadingAnimations = keyframes`

@@ -36,6 +36,12 @@ export const UpperHeaderContainer = styled.div`
         }
         }
     }
+
+    & .loginIconContainer{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    }
 `
 
 export const Gold = styled.span`
@@ -57,7 +63,6 @@ justify-content: space-between;
 `
 export const LoginIcon = styled(LoginLogo)`
     stroke-width: 5%;
-    /* margin-right: 2% */
 `
 export const MenuIcon = styled(MenuLogo)`
     margin-left: 2%;
@@ -87,11 +92,9 @@ export const DropDownContainer = styled.div`
     top: 9vh;
     min-width: 140px;
     min-height: 100px;
-    /* height: ${({open}) => open === true ? '100px' : "0"}; */
     z-index: 1;
     background-color: black;
     border-radius: 0 0 5px 5px;
-    /* transition:height 0.5s linear 0s; */
     
     & Link{
         color: white;

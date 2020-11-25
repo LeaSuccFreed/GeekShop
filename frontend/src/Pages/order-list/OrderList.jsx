@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/loading/Loading'
 import { orderDeleteRequest, orderDeleteReset } from '../../Redux/features/order/orderDeleteSlice'
 import { orderListRequest } from '../../Redux/features/order/orderListSlice'
+import { orderListSelect } from '../../Redux/features/order/orderReselect'
 import { Container, Table } from './oder-list_style'
 
 const OrderList = () => {
     const dispatch = useDispatch()
-    const {orders, loading, error} = useSelector(state => state.ordersList)
+    const {orders, loading, error} = useSelector(orderListSelect)
     const {error: errorDelete, success: successDelete, loading: loadingDelete} = useSelector(state => state.orderDelete)
     const navigate = useNavigate()
 

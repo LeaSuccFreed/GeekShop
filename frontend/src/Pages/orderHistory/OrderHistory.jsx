@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/loading/Loading'
+import { userOrderListSelect } from '../../Redux/features/order/orderReselect'
 import { userOrderListRequest } from '../../Redux/features/order/userOrderListSlice'
 
 import {Container, Table} from './orderHistory_style'
@@ -10,7 +11,7 @@ const OrderHistory = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-     const {loading, error, orders} = useSelector(state => state.userOrderList)
+     const {loading, error, orders} = useSelector(userOrderListSelect)
 
      useEffect(() => {
          dispatch(userOrderListRequest())

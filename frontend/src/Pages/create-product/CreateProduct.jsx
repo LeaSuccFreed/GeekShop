@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate} from "react-router-dom"
 import ListOfProducts from '../../components/listOfProducts/ListOfProducts'
 import { productSaveRequest } from '../../Redux/features/product/createProductslice'
 import { fetchStart } from '../../Redux/features/fetchComicsProducts/fetchComics'
@@ -13,7 +12,6 @@ import Loading from '../../components/loading/Loading'
 
 
 const CreateProduct = () => {
-    const navigate = useNavigate();
     const [id, setId] = useState('')
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -25,9 +23,8 @@ const CreateProduct = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     const dispatch = useDispatch()
-    const {data} = useSelector(state => state.fetchCars)
     const { loading, successSave, error } = useSelector(state => state.productSave);
-    const {loadingToDelete, successDelete, errorFromDeletion} = useSelector(state => state.productDelete)
+    const {successDelete} = useSelector(state => state.productDelete)
 
     useEffect(()=> {
         if(successSave){

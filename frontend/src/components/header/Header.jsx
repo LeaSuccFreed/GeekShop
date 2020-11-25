@@ -9,7 +9,6 @@ import { userSignOutInit } from '../../Redux/features/user/signinSlice'
 const Header = ({openmenu}) => {
     const {userInfo} = useSelector(state => state.signin)
     const[open, setOpen] = useState(false);
-    const[openAdmin, setOpenAdmin] = useState(false)
     const dispatch = useDispatch()
     
     const toogleOpen = (e) => {
@@ -32,7 +31,7 @@ const Header = ({openmenu}) => {
                         userInfo?._id ? 
                             ( 
                                 <>
-                                <p onClick={toogleOpen}  className="loginIconContainer"><strong>{userInfo.name}</strong></p>
+                                <p className="loginIconContainer" onClick={toogleOpen}><strong>{userInfo.name}</strong></p>
                                     <DropDownContainer open={open} className='dropDown'>
                                         <Lnk to='/profile'>Profile</Lnk>
                                         <Lnk to='/orderhistory'>Order History</Lnk>

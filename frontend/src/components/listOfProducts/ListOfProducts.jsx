@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { selectComicsItems } from '../../Redux/features/fetchComicsProducts/fetchComicsReselect'
 import {Content, ProductHeader, ProductList, Button} from './listOfProducts_style'
 
 const ListOfProducts = ({modal, deleteProduct}) => {
-    const {data} = useSelector(state => state.fetchCars)
+    const {data} = useSelector(selectComicsItems)
     return (
         <Content>
             <ProductList>
