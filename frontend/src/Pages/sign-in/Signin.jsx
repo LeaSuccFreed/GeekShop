@@ -42,15 +42,21 @@ const Signin = () => {
                     <li>
                         <input type="password" id="password" placeholder="Password" name="password" onChange={e => {setPassword(e.target.value)}}></input>
                     </li>
-                    <li>
+                    <li className="signIn">
                         <button type="submit" className="button">Sign In</button>
                     </li>
-                    <li className="newHere"><p>Hello friend new here?</p></li>
-                    <li>
+
+                    <li className="createAccount">
                         <Link className="newAcct" to={redirect === "/" ? "/register" : `/register?redirect=${redirect}`}>Create Account</Link>
+                    </li>
+
+                    <li>
+                        <p>To Sign in as admin use <br/> email: <strong>admin@geekuniverse.com</strong> <br/> password: <strong>admin</strong></p>
                     </li>
                     
                 </FormContainer>
+
+                
             </Form>
         </Container>
     )

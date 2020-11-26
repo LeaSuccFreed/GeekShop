@@ -140,6 +140,7 @@ const OrderDetail = () => {
 					{!sdkReady ? <Loading /> : 
 						<PayPalButton amount={ totalPrice } onSuccess={successPaymentHandler}></PayPalButton>
 					}
+          <p>To make your payment possible use <br/>email: <strong>sb-d9acu3660071@personal.example.com</strong>  <br/>password: <strong>rp39LG^&#62;</strong></p>
 				</div>
 
 			) }

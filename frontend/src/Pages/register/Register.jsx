@@ -54,9 +54,9 @@ const Signin = () => {
                     <li>
                         <button type="submit" className="button">Sign Up</button>
                     </li>
-                    <li><p>Already sign up ?</p></li>
+
                     <li>
-                        <Link className="newAcct" to={redirect === "/" ? "signin" : `register?redirect=${redirect}`}>Create Account</Link>
+                        <Link className="newAcct" to={redirect === "/" ? "/signin" : `register?redirect=${redirect}`}>LogIn</Link>
                     </li>
                     
                 </FormContainer>
